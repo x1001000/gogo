@@ -77,7 +77,7 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
     allow_reuse_address = True
     daemon_threads = True
 
-with picamera.PiCamera(resolution='960x480', framerate=24) as camera:
+with picamera.PiCamera(resolution='960x320', framerate=24) as camera:
     output = StreamingOutput()
     camera.hflip = True
     camera.vflip = True
@@ -88,4 +88,3 @@ with picamera.PiCamera(resolution='960x480', framerate=24) as camera:
         server.serve_forever()
     finally:
         camera.stop_recording()
-        
