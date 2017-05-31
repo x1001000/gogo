@@ -6,7 +6,7 @@ def movement(x):
     control.move(x)
 
 try:
-    run(host='0.0.0.0', port=80)
+    run(host='0.0.0.0', port=8080)
 
 finally:
     control.ena.stop()
