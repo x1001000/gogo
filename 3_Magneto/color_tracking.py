@@ -3,13 +3,15 @@ import numpy as np
 import control
 
 # Creating track bar
-'''
-cv2.createTrackbar('hl', 'result', 0,   359, nothing)
-cv2.createTrackbar('hu', 'result', 359, 359, nothing)
-cv2.createTrackbar('sl', 'result', 0,   100, nothing)
+def nothing():
+    pass
+cv2.namedWindow('result')
+cv2.createTrackbar('hl', 'result', 46,  359, nothing)
+cv2.createTrackbar('hu', 'result', 67,  359, nothing)
+cv2.createTrackbar('sl', 'result', 59,  100, nothing)
 cv2.createTrackbar('su', 'result', 100, 100, nothing)
 cv2.createTrackbar('vl', 'result', 0,   100, nothing)
-cv2.createTrackbar('vu', 'result', 100, 100, nothing)'''
+cv2.createTrackbar('vu', 'result', 100, 100, nothing)
 
 cap = cv2.VideoCapture(0)
 cap.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH,  320)
@@ -23,23 +25,22 @@ while True:
         #print len(frame)
 
         # get info from track bar and appy to result
-        '''
         hl = cv2.getTrackbarPos('hl', 'result')
         hu = cv2.getTrackbarPos('hu', 'result')
         sl = cv2.getTrackbarPos('sl', 'result')
         su = cv2.getTrackbarPos('su', 'result')
         vl = cv2.getTrackbarPos('vl', 'result')
-        vu = cv2.getTrackbarPos('vu', 'result')'''
+        vu = cv2.getTrackbarPos('vu', 'result')
 
-        # sports wear
         '''
+        # sports wear
         hl,hu=46,67 
         sl,su=59,100
-        vl,vu=0,100'''
+        vl,vu=0,100
         # tiffany blue(green) umbrella
         hl,hu=177,182 
         sl,su=27,100
-        vl,vu=0,100
+        vl,vu=0,100'''
         
         # h in range(180), s in range(256), v in range(256)
         hl = hl/2
@@ -75,8 +76,8 @@ while True:
                 elif center[0]>320*57/100:
                     control.move('d', 0.02)
                     print 'Right'
-                else: 
-                    control.move('w')
+                else:
+                    control.move('w', 0.05)
                     print 'Straight'
             else:
                 print 'stop'
