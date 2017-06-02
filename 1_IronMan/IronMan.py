@@ -6,7 +6,8 @@ controller=Leap.Controller()
 
 IP='172.19.16.186:8080'
 pi=3.14159
-a=20
+a1=15
+a2=20
 
 while True:
     #sleep(0.05)
@@ -16,19 +17,19 @@ while True:
         d=hands[0].direction
         #print hands[0].pinch_strength,
         if hands[0].pinch_strength > 0.65:
-            if d.yaw*180/pi < -a:
+            if d.yaw*180/pi < -a1:
                 requests.get('http://'+IP+'/a')
                 print 'Turn Left'
-            elif d.yaw*180/pi > a:
+            elif d.yaw*180/pi > a1:
                 requests.get('http://'+IP+'/d')
                 print 'Turn Right'
             else:
                 print 'Stop'
         else:
-            if d.yaw*180/pi < -a:
+            if d.yaw*180/pi < -a2:
                 requests.get('http://'+IP+'/q')
                 print 'Go Left'
-            elif d.yaw*180/pi > a:
+            elif d.yaw*180/pi > a2:
                 requests.get('http://'+IP+'/e')
                 print 'Go Right'
             else:
