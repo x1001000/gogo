@@ -1,5 +1,5 @@
 <div>
-  <a href="#" id="start_button" onclick="startDictation(event)"><h2>Talk to Gogo Pi</h2></a>
+  <img id="start_button" onclick="startDictation(event)" src="https://avatars0.githubusercontent.com/u/6036508" width="100%">
 </div>
 
 <div id="results">
@@ -13,45 +13,51 @@ var xhr = new XMLHttpRequest();
 
 var final_transcript = '';
 var recognizing = false;
+
 if ('webkitSpeechRecognition' in window) {
+
   var recognition = new webkitSpeechRecognition();
+
   recognition.continuous = true;
   recognition.interimResults = true;
+
   recognition.onstart = function() {
     recognizing = true;
   };
+
   recognition.onerror = function(event) {
     console.log(event.error);
   };
+
   recognition.onend = function() {
+xhr.open('GET', "/gogo/"+final_transcript, true);
+xhr.send();
     recognizing = false;
   };
+
   recognition.onresult = function(event) {
     var interim_transcript = '';
+// an event is a sentence    
     for (var i = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
-        final_transcript += event.results[i][0].transcript;
-
-xhr.open('GET', "/gogo/"+event.results[i][0].transcript, true);
-xhr.send();
-
+        //final_transcript += event.results[i][0].transcript;
+        final_transcript = event.results[i][0].transcript;
       } else {
-        interim_transcript += event.results[i][0].transcript;
+        //interim_transcript += event.results[i][0].transcript;
+        interim_transcript = event.results[i][0].transcript;
       }
     }
-    final_transcript = capitalize(final_transcript);
-    final_span.innerHTML = linebreak(final_transcript);
-    interim_span.innerHTML = linebreak(interim_transcript);
+    //final_span.innerHTML = linebreak(final_transcript);
+    //interim_span.innerHTML = linebreak(interim_transcript);
   };
 }
+
 var two_line = /\n\n/g;
 var one_line = /\n/g;
 function linebreak(s) {
   return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
 }
-function capitalize(s) {
-  return s.replace(s.substr(0,1), function(m) { return m.toUpperCase(); });
-}
+
 function startDictation(event) {
   if (recognizing) {
     recognition.stop();
