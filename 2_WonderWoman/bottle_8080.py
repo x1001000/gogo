@@ -1,4 +1,5 @@
 from bottle import route, run, template
+import control
 
 @route('/')
 def index():
@@ -8,4 +9,14 @@ def index():
 def gogo(cmd):
     print(cmd)
 
-run(host='0.0.0.0', port=8080)
+@route('/<x>')
+def movement(x):
+    control.move(x)
+
+try:
+    run(host='0.0.0.0', port=8080)
+
+finally:
+    control.ena.stop()
+    control.enb.stop()
+    control.GPIO.cleanup()

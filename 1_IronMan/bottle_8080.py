@@ -1,5 +1,13 @@
-from bottle import route, run#, template
+from bottle import route, run, template
 import control
+
+@route('/')
+def index():
+    return template('dictate')
+
+@route('/gogo/<cmd>')
+def gogo(cmd):
+    print(cmd)
 
 @route('/<x>')
 def movement(x):
