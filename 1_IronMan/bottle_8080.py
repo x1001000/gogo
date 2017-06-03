@@ -1,4 +1,5 @@
 from bottle import route, run, template
+from time import sleep
 import control
 
 @route('/')
@@ -9,14 +10,20 @@ def index():
 def gogo(sentence):
     print(sentence)
     for word in sentence:
-        if word=='前':
+        if word=='跑':
+            control.move('w',1)
+        elif word=='前':
             control.move('w',0.3)
-        if word=='左':
+        elif word=='進':
+            control.move('w',0.3)
+        elif word=='左':
             control.move('a',0.3)
-        if word=='右':
+        elif word=='右':
             control.move('d',0.3)
-        if word=='圈':
-            control.move('d',1.5)
+        elif word=='圈':
+            control.move('a',1)
+            sleep(1)
+            control.move('d',1)
 
 @route('/<x>')
 def movement(x):
