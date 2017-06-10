@@ -13,19 +13,19 @@ def gogo(sentence):
         if word=='跑':
             control.move('w',1)
         elif word=='前':
-            control.move('w',0.4)
+            control.move('w',0.3)
         elif word=='進':
-            control.move('w',0.4)
+            control.move('w',0.3)
         elif word=='左':
-            control.move('a',0.4)
+            control.move('a',0.3)
         elif word=='右':
-            control.move('d',0.4)
+            control.move('d',0.3)
         elif word=='後':
-            control.move('s',0.4)
+            control.move('s',0.3)
         elif word=='圈':
-            control.move('a',1)
+            control.move('j',1)
             sleep(0.1)
-            control.move('d',1)
+            control.move('k',1)
 
 @route('/<x>')
 def movement(x):
