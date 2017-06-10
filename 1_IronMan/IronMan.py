@@ -42,7 +42,6 @@ while True:
             elif d.yaw*180/pi > 0:
                 requests.get('http://'+IP+'/k')
                 print 'Spin Right'
- 
     else:
         #print 'not one hand'
         pass
