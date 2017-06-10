@@ -16,7 +16,7 @@ while True:
     if len(hands)==1:
         d=hands[0].direction
         #print hands[0].pinch_strength,
-        if hands[0].pinch_strength > 0.65:
+        if hands[0].grab_strength == 1:
             if d.yaw*180/pi < -a1:
                 requests.get('http://'+IP+'/a')
                 print 'Turn Left'
