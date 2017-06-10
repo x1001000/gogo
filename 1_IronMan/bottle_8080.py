@@ -33,6 +33,7 @@ def movement(x):
 
 @route('/pwm/<ena>/<enb>')
 def movement_by_pwm(ena,enb):
+    ena, enb = float(ena), float(enb)
     if ena > 0:
         control.GPIO.output(control.in1,1)
         control.GPIO.output(control.in2,0)
