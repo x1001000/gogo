@@ -11,7 +11,7 @@ while True:
     frame=controller.frame()
     if len(frame.hands)==2:
         for hand in frame.hands:
-            pwm = 0 if hand.grab_strength == 1 else Leap.Vector.forward.dot(hand.palm_normal)#Leap.Vector.backward.magnitude_squared
+            pwm = 0 if hand.grab_strength == 1 else Leap.Vector.forward.dot(hand.palm_normal)
             if hand.is_left:
                 order['L'] = pwm*100//1
             else:
