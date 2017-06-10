@@ -96,6 +96,10 @@ def move(x, move_time=0.1):
     elif x=='z':
         backward()
         left()
+    elif x=='j':
+        spinL()
+    elif x=='k':
+        spinR()
 
     time.sleep(move_time)
     stop()
