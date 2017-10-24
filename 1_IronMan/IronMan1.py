@@ -4,7 +4,7 @@ from time import sleep
 
 controller=Leap.Controller()
 
-IP='192.168.43.76:8080'
+IP='192.168.43.17:8080'
 pi=3.14159
 a1=15
 a2=20
