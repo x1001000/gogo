@@ -52,11 +52,11 @@ def wonder(sentence):
             control.move('k',1)
 
 @get('/<filename:re:.*\.js>')
-def javascripts(filename):
+def js(filename):
     return static_file(filename, root='static/js')
 
 @get('/<filename:re:.*\.css>')
-def javascripts(filename):
+def css(filename):
     return static_file(filename, root='static/css')
 
 @route('/ant')
