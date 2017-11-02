@@ -30,7 +30,7 @@ if ('webkitSpeechRecognition' in window) {
   };
 
   recognition.onend = function() {
-xhr.open('GET', "/gogo/"+final_transcript, true);
+xhr.open('GET', "/wonder/"+final_transcript, true);
 xhr.send();
     recognizing = false;
   };
