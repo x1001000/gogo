@@ -5,7 +5,7 @@ import socketserver
 from threading import Condition
 from http import server
 
-PAGE="""\
+PAGE="""
 <html>
 <head>
 <title>picamera MJPEG streaming demo</title>
