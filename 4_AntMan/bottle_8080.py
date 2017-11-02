@@ -1,4 +1,4 @@
-from bottle import *#route, run, template, get, static_file
+from bottle import route, run, template, get, static_file
 from time import sleep
 import control
 
@@ -51,13 +51,9 @@ def wonder(sentence):
             sleep(0.1)
             control.move('k',1)
 
-@get('/<filename:re:.*\.js>')
+@get('/<filename>')
 def js(filename):
-    return static_file(filename, root='static/js')
-
-@get('/<filename:re:.*\.css>')
-def css(filename):
-    return static_file(filename, root='static/css')
+    return static_file(filename, root='static')
 
 @route('/ant')
 def antman():
