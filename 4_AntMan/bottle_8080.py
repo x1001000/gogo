@@ -1,4 +1,4 @@
-from bottle import route, run, template, get
+from bottle import route, run, template, get, static_file
 from time import sleep
 import control
 
