@@ -8,11 +8,12 @@ from http import server
 PAGE="""
 <html>
 <head>
-<title>picamera MJPEG streaming demo</title>
+<!--<title>picamera MJPEG streaming demo</title>-->
+<title>AntMan view</title>
 </head>
 <body>
 <img src="stream.mjpg" width="100%"/>
-<marquee behavior="alternate" scrollamount="30"><h1><font color="blue">Gogo Pi</font></h1></marquee>
+<marquee behavior="alternate" scrollamount="30"><h1><font color="blue">@1001000x4</font></h1></marquee>
 </body>
 </html>
 """
